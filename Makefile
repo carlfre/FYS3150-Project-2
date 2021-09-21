@@ -7,6 +7,7 @@ main: main.cpp $(headers) $(sources)
 latex: main
 	cd latex
 	pdflatex project.tex
+	pdflatex project.tex
 	rm -f project_1.log
 	rm -f project_1.aux
 	rm -f texput.log
