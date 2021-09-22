@@ -5,14 +5,13 @@ main: main.cpp $(headers) $(sources)
 	g++ main.cpp $(sources) -I include -o main -std=c++11 -larmadillo
 
 latex: main
-	cd latex
-	pdflatex project.tex
-	pdflatex project.tex
-	rm -f project_1.log
-	rm -f project_1.aux
+	pdflatex latex/project.tex
+	rm -f project.log
+	rm -f project.aux
 	rm -f texput.log
-	cd ../
-	mv latex/project.pdf project.pdf
+	rm -f project.out
+	rm -f projectNotes.bib
+	rm -f amsmath.aux
 
 clean:
 	rm -f main
