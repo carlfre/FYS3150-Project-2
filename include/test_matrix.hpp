@@ -3,6 +3,7 @@
 
 #include <armadillo>
 #include <cassert>
+#include <cmath>
 #include "create_tridiagonal.hpp"
 
 //Tests that eigenvalues and vectors of matrix from
