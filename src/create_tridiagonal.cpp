@@ -15,7 +15,7 @@ arma::mat create_tridiagonal(const arma::vec& a, const arma::vec& d,const arma::
     A(0, 1) = e(0);
 
     // Loop that fills rows 2 to n-1 (row indices 1 to n-2)
-    for (i = 1;i < n-1; i++)
+    for (int i = 1;i < n-1; i++)
     {
         A(i, i-1) = a(i-1);
         A(i, i) = d(i);
@@ -26,7 +26,7 @@ arma::mat create_tridiagonal(const arma::vec& a, const arma::vec& d,const arma::
     A(n-1, n-2) = a(n-2);
     A(n-1, n-1) = d(n-1);
 
-    arma::mat A; //hvorfor?
+    //arma::mat A; //hvorfor?
     return A;
 }
 
