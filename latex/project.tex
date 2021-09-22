@@ -85,10 +85,10 @@
 \textit{https://github.com/carlfre/FYS3150-Project-2}
     
 \section*{Problem 2}
-Next, we want to show an important property of orthogonal transformations. Let us assume that we have a set of vectors $v_i$ that is orthonormal, in other words $v_i^T \cdot v_j^T = \delta_{ij}$, and that $U$ is an orthogonal matrix, i.e. that $U^T = U^{-1}$. Now, we want to show that the set of vectors $w_i = U v_i$ is also orthornormal. Saying that it is orthonormal is the same as saying that $w_i^T \cdot w_j^T = \delta_{ij}$. We insert our definition of $w_i$ into this, and get
+Next, we want to show an important property of orthogonal transformations. Let us assume that we have a set of vectors $v_i$ that is orthonormal, in other words $v_i^T \cdot v_j = \delta_{ij}$, and that $U$ is an orthogonal matrix, i.e. that $U^T = U^{-1}$. Now, we want to show that the set of vectors $w_i = U v_i$ is also orthornormal. Saying that it is orthonormal is the same as saying that $w_i^T \cdot w_j = \delta_{ij}$. We insert our definition of $w_i$ into this, and get
 
 \begin{align*}
-\left(U v_i \right)^T \cdot (U v_j) = v_i^T U^T U v_j = v_i^T U^{-1} U v_j = v_i^T \cdot v_i
+\left(U v_i \right)^T \cdot (U v_j) = v_i^T U^T U v_j = v_i^T U^{-1} U v_j = v_i^T \cdot v_j
 \end{align*}
 
 This, we know is equal to $\delta_{ij}$, and thus we have proved the property.
