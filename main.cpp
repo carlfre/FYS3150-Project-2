@@ -9,6 +9,6 @@ using namespace std;
 
 int main(int argc, char *argv[]) 
 {
-    test_symmetric_tridiagonal_eigenval_eigenvec();
+    test_6_by_6_symmetric_with_eig_sym();
     return 0;
 }
