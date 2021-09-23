@@ -2,6 +2,7 @@
 #define __matrix_operations__
 
 #include <armadillo>
+#include <cmath>
 
 // Determine the the max off-diagonal element of a symmetric matrix A
 // - Saves the matrix element indicies to k and l
@@ -27,45 +28,3 @@ void jacobi_eigensolver(const arma::mat& A, double eps, arma::vec& eigenvalues, 
                         const int maxiter, int& iterations, bool& converged);
 
 #endif
-
-// Test of matrix from 4b)
-int main()
-{
-  int k = 0;
-  int l = 0;
-
-  int N = 4;
-
-  arma::mat A;
-  A << 1 << 0 << 0 << 0.5 << endr
-    << 0 << 1 << -0.7 << 0 << endr
-    << 0 << -0.7 << 1 << 0 << endr
-    << 0.5 << 0 << 0 << 1 << endr;
-
-  //A.print("A=");
-
-  mat R;
-  R.eye(N,N);
-
-  max_offdiag_symmetric(A, k, l);
-  return 0;
-}
-
-
-// finding maxval off-diagonal of symmetric matrix.
-double max_offdiag_symmetric(const arma::mat& A, int& k, int& l)
-{
-  double max = 0.0;
-  int n = sqrt(A.size());
-  cout << n <<endl;
-  for ( int i = 0; i < n; i++ ) {
-    for ( int j = i + 1; j < n; j++) {
-      if (abs(A(i,j)) > max ){
-        max = abs(A(i,j));
-        l = i;
-        k = j;
-      }
-      }
-    }
-  return max;
-}
