@@ -4,10 +4,10 @@
 // - lower diagonal: vector a, lenght n-1
 // - main diagonal:  vector d, lenght n
 // - upper diagonal: vector e, lenght n-1
-arma::mat create_tridiagonal(const arma::vec& a, const arma::vec& d,const arma::vec& e)
+arma::mat create_tridiagonal(const arma::vec& a, const arma::vec& d, const arma::vec& e)
 {
     // Start from identity matrix
-    int N = d.n_elem;
+    const int N = d.n_elem;
     arma::mat A = arma::mat(N, N, arma::fill::eye);
     
     // Fill first row (row index 0)
