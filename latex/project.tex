@@ -95,7 +95,7 @@ can be written as
 \label{eq:dimless}
 \end{equation}
 
-Let us start by replacing $x$ with $\hat{x}$. Since $\frac{d}{dx} = \frac{d \hat{x}}{dx} \frac{d}{d \hat{x}} = \frac{1}{L} \frac{d}{d \hat{x}}$, we get
+Let us start by replacing $x$ with $\hat{x}$. Since $\frac{d}{dx} = \frac{d \hat{x}}{dx} \frac{d}{d \hat{x}} = \frac{1}{L} \frac{d}{d \hat{x}}$, we get
 
 \[ \gamma \frac{1}{L^2} \frac{d^2 u(\hat{x})}{d \hat{x}^2} = -F u(x) \]
 
@@ -106,6 +106,15 @@ If we now insert $F = \frac{\lambda \gamma}{L^2}$, we see that our final express
 \frac{d^2 u(\hat{x})}{d \hat{x}^2} &= - \lambda u(\hat{x}),
 \end{align*}
 which is the same as (\ref{eq:dimless}), as we wanted to show.
+
+\section*{Problem 2}
+Next, we want to show an important property of orthogonal transformations. Let us assume that we have a set of vectors $v_i$ that is orthonormal, in other words $v_i^T \cdot v_j = \delta_{ij}$, and that $U$ is an orthogonal matrix, i.e. that $U^T = U^{-1}$. Now, we want to show that the set of vectors $w_i = U v_i$ is also orthornormal. Saying that it is orthonormal is the same as saying that $w_i^T \cdot w_j = \delta_{ij}$. We insert our definition of $w_i$ into this, and get
+
+\begin{align*}
+\left(U v_i \right)^T \cdot (U v_j) = v_i^T U^T U v_j = v_i^T U^{-1} U v_j = v_i^T \cdot v_j
+\end{align*}
+
+This, we know is equal to $\delta_{ij}$, and thus we have proved the property.
 
 % \subsection*{Problem a}
 % Write a solution for problem 1a here.
