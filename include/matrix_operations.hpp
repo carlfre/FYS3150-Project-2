@@ -2,11 +2,13 @@
 #define __matrix_operations__
 
 #include <armadillo>
+#include <cmath>
 
 // Determine the the max off-diagonal element of a symmetric matrix A
-// - Saves the matrix element indicies to k and l 
+// - Saves the matrix element indicies to k and l
 // - Returns absolute value of A(k,l) as the function return value
 double max_offdiag_symmetric(const arma::mat& A, int& k, int& l);
+
 
 // Performs a single Jacobi rotation, to "rotate away"
 // the off-diagonal element at A(k,l).
@@ -22,7 +24,7 @@ void jacobi_rotate(arma::mat& A, arma::mat& R, int k, int l);
 // - Stops if it the number of iterations reaches "maxiter"
 // - Writes the number of iterations to the integer "iterations"
 // - Sets the bool reference "converged" to true if convergence was reached before hitting maxiter
-void jacobi_eigensolver(const arma::mat& A, double eps, arma::vec& eigenvalues, arma::mat& eigenvectors, 
+void jacobi_eigensolver(const arma::mat& A, double eps, arma::vec& eigenvalues, arma::mat& eigenvectors,
                         const int maxiter, int& iterations, bool& converged);
 
 #endif

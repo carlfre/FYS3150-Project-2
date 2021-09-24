@@ -7,26 +7,40 @@
 //   return value
 double max_offdiag_symmetric(const arma::mat& A, int& k, int& l)
 {
-  // Get size of the matrix A. Use e.g. A.n_rows, see the Armadillo documentation
+    // Get size of the matrix A. Use e.g. A.n_rows, see the Armadillo documentation
 
-  // Possible consistency checks:
-  // Check that A is square and larger than 1x1. Here you can for instance use A.is_square(), 
-  // see the Armadillo documentation.
-  // 
-  // The standard function 'assert' from <assert.h> can be useful for quick checks like this 
-  // during the code development phase. Use it like this: assert(some condition),
-  // e.g assert(a==b). If the condition evaluates to false, the program is killed with 
-  // an assertion error. More info: https://www.cplusplus.com/reference/cassert/assert/
+    // Possible consistency checks:
+    // Check that A is square and larger than 1x1. Here you can for instance use A.is_square(), 
+    // see the Armadillo documentation.
+    // 
+    // The standard function 'assert' from <assert.h> can be useful for quick checks like this 
+    // during the code development phase. Use it like this: assert(some condition),
+    // e.g assert(a==b). If the condition evaluates to false, the program is killed with 
+    // an assertion error. More info: https://www.cplusplus.com/reference/cassert/assert/
 
-  // Initialize references k and l to the first off-diagonal element of A
+    // Initialize references k and l to the first off-diagonal element of A
 
-  // Initialize a double variable 'maxval' to A(k,l). We'll use this variable 
-  // to keep track of the largest off-diag element.
+    // Initialize a double variable 'maxval' to A(k,l). We'll use this variable 
+    // to keep track of the largest off-diag element.
 
-  // Loop through all elements in the upper triangle of A (not including the diagonal)
-  // When encountering a matrix element with larger absolute value than the current value of maxval,
-  // update k, l and max accordingly.
+    // Loop through all elements in the upper triangle of A (not including the diagonal)
+    // When encountering a matrix element with larger absolute value than the current value of maxval,
+    // update k, l and max accordingly.
 
-  // Return maxval 
-    return 0;
+    // Return maxval
+    double max = 0.0;
+    int n = A.n_cols;
+    for ( int i = 0; i < n; i++ ) 
+    {
+        for ( int j = i+1; j < n; j++) 
+        {
+            if (fabs(A(i,j)) > max )
+            {
+                max = fabs(A(i,j));
+                k = i;
+                l = j;
+             }
+        }
+    }
+    return max;
 }
