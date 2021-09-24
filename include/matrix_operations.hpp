@@ -51,13 +51,31 @@ int main()
   return 0;
 }
 
+void jacobi_eigensolver(arma::mat& A, arma::vec& eigenvalues, arma::mat& eigenvectors, const int maxiter, int& iterations)
+{
+  int n = sqrt(A.size());
+  mat R;
+  R.eye(n,n);
+  int k = 0;
+  int l = 0;
+  double eps = 1.0e-8;
+  double maxoffdiag = max_offdiag_symmetric(A, k, l, n);
 
-// finding maxval off-diagonal of symmetric matrix.
-double max_offdiag_symmetric(const arma::mat& A, int& k, int& l)
+
+  while ( abs(maxoffdiag) > eps && iterations < maxiter) {
+    jacobi_rotate(A, R, k, l);
+    iterations++;
+  }
+  //cout << "Nub of iter:" << iterations <<"\n";
+  return;
+
+}
+
+double max_offdiag_symmetric(const arma::mat& A, int& k, int& l, int n)
 {
   double max = 0.0;
-  int n = sqrt(A.size());
-  cout << n <<endl;
+
+  //cout << n <<endl;
   for ( int i = 0; i < n; i++ ) {
     for ( int j = i + 1; j < n; j++) {
       if (abs(A(i,j)) > max ){
@@ -68,4 +86,51 @@ double max_offdiag_symmetric(const arma::mat& A, int& k, int& l)
       }
     }
   return max;
+}
+
+void jacobi_rotate(arma::mat& A, arma::mat& R, int k, int l)
+{
+  int n = sqrt(A.size());
+  double s, c;
+  if ( A(k,l) != 0.0 ) {
+    double t, tau;
+    tau = ((A(l,l) - A(k,k))/2*A(k,l));
+    if ( tau > 0 ) {
+      t = 1.0/(tau + sqrt(1.0 + tau*tau));
+    } else {
+      t = -1.0/( -tau + sqrt(1.0 + tau*tau));
+    }
+    c = 1/sqrt(1+t*t);
+    s = c*t;
+  } else {
+    c = 1.0;
+    s = 0.0;
+  }
+  double akk, all, aik, ail, rik, ril;
+  akk = A(k,k);
+  all = A(l,l);
+
+  A(k,k) = c*c*akk - 2.0*A(k,l) + s*s*all;
+  A(l,l) = s*s*akk + 2.0*A(k,l) + l*l*all;
+
+  A(l,k) = 0.0;
+  A(k,l) = 0.0;
+
+  for ( int i = 0; i < n; i++) {
+    if ( i != k && i != l ) {
+      aik = A(i,k);
+      ail = A(i,l);
+      A(i,k) = c*aik - s*ail;
+      A(k,i) = A(i,k);
+      A(i,l) = c*ail + s*aik;
+      A(l,i) = A(i,l);
+  }
+  rik = R(i,k);
+  ril = R(i,l);
+  R(i,k) = c*aik - s*ail;
+  R(i,l) = c*ail + s*aik;
+
+  }
+  return;
+
 }
