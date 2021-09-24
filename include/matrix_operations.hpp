@@ -69,8 +69,8 @@ void jacobi_eigensolver(arma::mat& A, arma::vec& eigenvalues, arma::mat& eigenve
   //cout << "Nub of iter:" << iterations <<"\n";
   return;
 
-}
 
+}
 double max_offdiag_symmetric(const arma::mat& A, int& k, int& l, int n)
 {
   double max = 0.0;
