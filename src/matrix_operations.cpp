@@ -114,7 +114,7 @@ void jacobi_eigensolver(arma::mat& A, double eps, arma::vec& eigenvalues, arma::
     }
     converged = (iterations < maxiter);
     eigenvalues = arma::diagvec(A);
-
+    
     //sort eigenvectors
     arma::uvec sorting_indices = arma::sort_index(eigenvalues);
     arma::mat temp = eigenvectors;
