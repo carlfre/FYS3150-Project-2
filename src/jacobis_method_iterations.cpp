@@ -3,16 +3,12 @@
 std::vector<int> no_of_jacobi_iterations(std::vector<int> N_values_vector, double eps)
 {
     int no_of_N_values = N_values_vector.size();
-    int N;
-    int n;
-    double h;
-    double a;
-    double d;
+    int N, n;
+    double h, a, d;
     arma::mat A;
     arma::vec eigenvalues;
     arma::mat eigenvectors;
-    int maxiter;
-    int iterations;
+    int maxiter, iterations;
     bool converged;
 
     std::vector<int> iterations_vector;
