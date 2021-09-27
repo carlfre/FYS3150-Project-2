@@ -3,7 +3,7 @@
 
 This project aims to solve a special case of a one-dimensional buckling beam problem by discretizing the given differential equation and turning it into a eigenvalue problem.
 
-##Usage
+## Usage
 There is a 'Makefile' included, meaning that the c++ code can be built by running `make main`.
 
 * `make test` runs the tests from exercises 3, 4, 5. The program prints eigenvectors and eigenvalues computed with 3 different methods, such that one can compare them.
