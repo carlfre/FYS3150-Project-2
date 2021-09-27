@@ -75,7 +75,7 @@
 \begin{document}
 
 \title{FYS3150 Project 2}      % self-explanatory
-\author{Carl Fredrik Nordbø Knutsen \& Didrik Sten Ingebrigtsen}          % self-explanatory
+\author{Carl Fredrik Nordbø Knutsen, Didrik Sten Ingebrigtsen \& Jan Harald Aasen}          % self-explanatory
 \date{\today}                             % self-explanatory
 \noaffiliation                            % ignore this, but keep it.
 
@@ -95,7 +95,7 @@ can be written as
 \label{eq:dimless}
 \end{equation}
 
-Let us start by replacing $x$ with $\hat{x}$. Since $\frac{d}{dx} = \frac{d \hat{x}}{dx} \frac{d}{d \hat{x}} = \frac{1}{L} \frac{d}{d \hat{x}}$, we get
+Let us start by replacing $x$ with $\hat{x}$. Since $\frac{d}{dx} = \frac{d \hat{x}}{dx} \frac{d}{d \hat{x}} = \frac{1}{L} \frac{d}{d \hat{x}}$, we get
 
 \[ \gamma \frac{1}{L^2} \frac{d^2 u(\hat{x})}{d \hat{x}^2} = -F u(x) \]
 
@@ -129,11 +129,11 @@ The \lstinline{max_offdiag_symmetric} function can be found in \lstinline{includ
 Just like in problem 3, the code used to test this is in \lstinline{include/test.hpp} and \lstinline{src/test.cpp}, and can be run by running \lstinline{make test}. However, we used assertions to verify that everything works as it should, instead of printing it out and manually interpreting the results. If we had done everything again, we would have used this approach on problem 3 as well.
 
 \section*{Problem 5}
-The code used to implement Jacobi's rotation algorithm is in the function \lstinline{jacobi_rotate} in \lstinline{include/matrix_operations.hpp} and \lstinline{src/matrix_operations.cpp}. The tests discussed in part b of this problem was adressed above here, in problem 3.
+The code used to implement Jacobi's rotation algorithm is in the functions \lstinline{jacobi_eigensolver} and \lstinline{jacobi_rotate} in \lstinline{include/matrix_operations.hpp} and \lstinline{src/matrix_operations.cpp}. The tests discussed in part b of this problem was adressed above here, in problem 3.
 
 \section*{Problem 6}
 \subsection*{a)}
-To find the number of transformations required, we use our previously implemented \lstinline{jacobi_rotate} function, and write the number of iterations used to file. We then use in \lstinline{src/plot.py} to plot it, and the results can be seen in figure \ref{fig:similarity}. If we fit a polynomial of degree $2$ to the data, we can see it fits perfectly.
+To find the number of transformations required, we use our previously implemented \lstinline{jacobi_eigensolver} function, and write the number of iterations used to file. We then use in \lstinline{src/plot.py} to plot it, and the results can be seen in figure \ref{fig:similarity}. If we fit a polynomial of degree $2$ to the data, we can see it fits perfectly.
 
 \begin{figure}
     \centering
