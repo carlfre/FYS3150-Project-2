@@ -95,7 +95,7 @@ can be written as
 \label{eq:dimless}
 \end{equation}
 
-Let us start by replacing $x$ with $\hat{x}$. Since $\frac{d}{dx} = \frac{d \hat{x}}{dx} \frac{d}{d \hat{x}} = \frac{1}{L} \frac{d}{d \hat{x}}$, we get
+Let us start by replacing $x$ with $\hat{x}$. Since $\frac{d}{dx} = \frac{d \hat{x}}{dx} \frac{d}{d \hat{x}} = \frac{1}{L} \frac{d}{d \hat{x}}$, we get
 
 \[ \gamma \frac{1}{L^2} \frac{d^2 u(\hat{x})}{d \hat{x}^2} = -F u(x) \]
 
@@ -116,6 +116,53 @@ Next, we want to show an important property of orthogonal transformations. Let u
 
 This, we know is equal to $\delta_{ij}$, and thus we have proved the property.
 
+\section*{Problem 3}
+
+The code used to test this is in \lstinline{include/test.hpp} and \lstinline{src/test.cpp}, and can be run by running \lstinline{make test}. When done, it is evident that the analytical and Armadillo's \lstinline{eig_sym} give the same results, at least to a couple of decimals. In this test, we also used our Jacobi's rotation implementation implemented as a part of problem 5, and compared the results it gives.
+
+\section*{Problem 4}
+
+\subsection*{a)}
+The \lstinline{max_offdiag_symmetric} function can be found in \lstinline{include/matrix_operations.hpp} and \lstinline{src/matrix_operations.cpp}.
+
+\subsection*{b)}
+Just like in problem 3, the code used to test this is in \lstinline{include/test.hpp} and \lstinline{src/test.cpp}, and can be run by running \lstinline{make test}. However, we used assertions to verify that everything works as it should, instead of printing it out and manually interpreting the results. If we had done everything again, we would have used this approach on problem 3 as well.
+
+\section*{Problem 5}
+The code used to implement Jacobi's rotation algorithm is in the function \lstinline{jacobi_rotate} in \lstinline{include/matrix_operations.hpp} and \lstinline{src/matrix_operations.cpp}. The tests discussed in part b of this problem was adressed above here, in problem 3.
+
+\section*{Problem 6}
+\subsection*{a)}
+To find the number of transformations required, we use our previously implemented \lstinline{jacobi_rotate} function, and write the number of iterations used to file. We then use in \lstinline{src/plot.py} to plot it, and the results can be seen in figure \ref{fig:similarity}. If we fit a polynomial of degree $2$ to the data, we can see it fits perfectly.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.55]{plots/similarity.pdf}
+    \caption{The number of similarity transformations required for different sizes of matrices, and a second order polynomial fit to the empirical data.}
+    \label{fig:similarity}
+\end{figure}
+
+\subsection*{b)}
+The Jacobi's rotation algorithm doesn't take advantage of the fact that the matrices in our problem are tridiagonal. After a couple of iterations on a large matrix, it will no longer be tridiagonal. This makes it reasonable to expect that it won't perform that much worse on a dense matrix than on a tridiagonal matrix like here.
+
+\section*{Problem 7}
+To solve this problem, we use all the components implemented, and assemble it in \lstinline{main.cpp}. We also have some new plotting code in \lstinline{src/plot.py} for this problem. Together, they make fig \ref{fig:solution10} and \ref{fig:solution100}. Notice the difference between the third subplots in the two plots. This just comes from the fact that if $v$ is an eigenvector, then $-v$ is also one.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.55]{plots/solution_for_N_equals10.pdf}
+    \caption{Solutions for $N = 10$. The three different subplots show the normalised eigenvectors for different eigenvalues. This can be interpreted as the deflection of the beam under different ratios of force, quadratic length, and material properties.}
+    \label{fig:solution10}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.55]{plots/solution_for_N_equals100.pdf}
+    \caption{Solutions for $N = 100$. The three different subplots show the normalised eigenvectors for different eigenvalues. This can be interpreted as the deflection of the beam under different ratios of force, quadratic length, and material properties.}
+    \label{fig:solution100}
+\end{figure}
+
+
 % \subsection*{Problem a}
 % Write a solution for problem 1a here.
 
@@ -126,7 +173,7 @@ This, we know is equal to $\delta_{ij}$, and thus we have proved the property.
 % We write equations using the LaTeX \texttt{equation} (or \texttt{align}) environments. Here is an equation with numbering
 % \begin{equation}\label{eq:newton}
 %     \vb{F} = \dv{\vb{p}}{t},
-% \end{equation}
+    % //tridiagonal.print();    //tridiagonal.print();% \end{equation}
 % and here is one without numbering:
 % \begin{equation*}
 % \oint_C \vb{F}\cdot \dd \vb{r} = 0.

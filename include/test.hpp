@@ -1,5 +1,5 @@
-#ifndef __test_matrix__
-#define test_matrix
+#ifndef __test__
+#define __test__
 
 #include <armadillo>
 #include <cassert>
@@ -13,7 +13,8 @@
 //vectors computed with formula from project description
 void test_6_by_6_symmetric_find_eigenvalues_and_eigenvectors();
 
-//Tests the jaco
-//void test_jacobi_rotation_method();
+//Tests that max_offdiag_symmetric finds largest offdiagonal element
+//for example matrix
+void test_max_offdiag_symmetric();
 
 #endif

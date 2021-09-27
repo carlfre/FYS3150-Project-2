@@ -1,4 +1,5 @@
-#include "../include/test_6_by_6_matrix.hpp"
+#include "../include/test.hpp"
+#include "../include/matrix_operations.hpp"
 
 //Tests that eigenvalues and vectors of matrix from
 //create_symmetric_tridiagonal align with eigenvalues and 
@@ -71,4 +72,23 @@ void test_6_by_6_symmetric_find_eigenvalues_and_eigenvectors()
     eigvecs_jacobi.print();
     std::cout << "Eigenvectors with analytical formula:" << std::endl;
     eigvecs_analytical.print();
+}
+
+// Test of matrix from 4b)
+void test_max_offdiag_symmetric()
+{
+    arma::mat A;
+    A << 1 << 0 << 0 << 0.5 << arma::endr
+      << 0 << 1 << -0.7 << 0 << arma::endr
+      << 0 << -0.7 << 1 << 0 << arma::endr
+      << 0.5 << 0 << 0 << 1 << arma::endr;
+
+    int k; //row index
+    int l; //col index
+    double max_val = max_offdiag_symmetric(A, k, l);
+    //Expecting element (1, 2) to be found as function
+    //finds max in upper triangle
+    assert (max_val == 0.7);
+    assert (k == 1);
+    assert (l == 2);
 }
