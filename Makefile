@@ -27,5 +27,5 @@ problem7: main
 
 clean:
 	rm -f main
-	rm -f -rf data
-	rm -f -rf plots
+	rm -f -rf data/*.csv
+	rm -f -rf plots/*.pdf
