@@ -133,20 +133,34 @@ The code used to implement Jacobi's rotation algorithm is in the function \lstin
 
 \section*{Problem 6}
 \subsection*{a)}
-To find the number of transformations required, we use our previously implemented \lstinline{jacobi_rotate} function, and write the number of iterations used to file. We then use in \lstinline{src/plot.py} to plot it, and the results can be seen in figure \ref{fig:similarity}.
+To find the number of transformations required, we use our previously implemented \lstinline{jacobi_rotate} function, and write the number of iterations used to file. We then use in \lstinline{src/plot.py} to plot it, and the results can be seen in figure \ref{fig:similarity}. If we fit a polynomial of degree $2$ to the data, we can see it fits perfectly.
+
 \begin{figure}
     \centering
     \includegraphics[scale=0.55]{plots/similarity.pdf}
-    \caption{The number of similarity transformations required for different sizes of matrices. As evident, this scales quite a lot faster than linear.}
+    \caption{The number of similarity transformations required for different sizes of matrices, and a second order polynomial fit to the empirical data.}
     \label{fig:similarity}
 \end{figure}
 
 \subsection*{b)}
-???
-
+The Jacobi's rotation algorithm doesn't take advantage of the fact that the matrices in our problem are tridiagonal. After a couple of iterations on a large matrix, it will no longer be tridiagonal. This makes it reasonable to expect that it won't perform that much worse on a dense matrix than on a tridiagonal matrix like here.
 
 \section*{Problem 7}
+To solve this problem, we use all the components implemented, and assemble it in \lstinline{main.cpp}. We also have some new plotting code in \lstinline{src/plot.py} for this problem. Together, they make fig \ref{fig:solution10} and \ref{fig:solution100}. Notice the difference between the third subplots in the two plots. This just comes from the fact that if $v$ is an eigenvector, then $-v$ is also one.
 
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.55]{plots/solution_for_N_equals10.pdf}
+    \caption{Solutions for $N = 10$. The three different subplots show the normalised eigenvectors for different eigenvalues. This can be interpreted as the deflection of the beam under different ratios of force, quadratic length, and material properties.}
+    \label{fig:solution10}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.55]{plots/solution_for_N_equals100.pdf}
+    \caption{Solutions for $N = 100$. The three different subplots show the normalised eigenvectors for different eigenvalues. This can be interpreted as the deflection of the beam under different ratios of force, quadratic length, and material properties.}
+    \label{fig:solution100}
+\end{figure}
 
 
 % \subsection*{Problem a}
