@@ -4,8 +4,7 @@
 
 #include "create_tridiagonal.hpp"
 #include "matrix_operations.hpp"
-#include "test_matrix_operations.hpp"
-#include "test_6_by_6_matrix.hpp"
+#include "test.hpp"
 #include "jacobis_method_iterations.hpp"
 #include "write_to_file.hpp"
 
