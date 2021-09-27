@@ -2,15 +2,22 @@
 """
 import os
 import numpy as np
+from numpy.polynomial import Polynomial
 import matplotlib.pyplot as plt
 
 def plot_number_of_transformations(filename):
     """Plots the number of transformations vs N"""
     data = np.loadtxt(f"data/{filename}", dtype=int, delimiter=",")
-    plt.scatter(*data.T)
+    N, transformations = data.T
+    poly = Polynomial.fit(N, transformations, 2)
+    expression = "$\\mathcal{O}(N) = x^2$"
+    plt.plot(*poly.linspace(100), label=f"Fit with {expression}")
+
+    plt.scatter(N, transformations, label="Raw data")
     plt.title("Similarity transformations needed to solve system")
     plt.xlabel("N")
     plt.ylabel("Transformations")
+    plt.legend()
     plt.savefig("plots/similarity.pdf")
 
 def read_3_eigenvalues_and_eigenvectors_from_file(filename):
